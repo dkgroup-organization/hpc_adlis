@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_bom_line_ids_add_custom">
+        <field name="name">view.sale.bom.line.bom.cost</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page/field[@name='bom_line_ids']/tree/field[@name='product_uom_id']" position="after">
+                <field name="python_compute" optional="hide"/>
+            </xpath>
+            <page name="miscellaneous" position="before">
+                    <page string="Parameters">
+                        <group>
+                            <field name="sale_line_id"/>
+                            <field name="sale_id"/>
+                        </group>
+                            <button name="create_attribute_value" string="update" type="object"/>
+                    <group>
+                        <field name="parameter_ids">
+                            <tree editable="bottom">
+                                <field name="attribute_id"/>
+                                <field name="name"/>
+                                <field name="value"/>
+                            </tree>
+                        </field>
+                    </group>
+                    </page>
+                </page>
+        </field>
+    </record>
+</odoo>
