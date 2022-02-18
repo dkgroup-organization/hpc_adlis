@@ -2,9 +2,32 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import safe_eval
+import unicodedata
 
 import logging
 _logger = logging.getLogger(__name__)
+
+
+def remove_accents(input_str):
+    only_ascii = unicodedata.normalize('NFD', input_str).encode('ascii', 'ignore')
+    if type(only_ascii) == bytes:
+        return only_ascii.decode()
+    else:
+        return only_ascii
+
+
+def txt_cleanup(text):
+    """Return a compatible text with python variable notation"""
+    if text:
+        text = remove_accents(text)
+        text = text.strip()
+        for char in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~\n':
+            text = text.replace(char, ' ')
+        for char in [('   ', ' '), ('  ', ' '), (' ', '_')]:
+            text = text.replace(char[0], char[1])
+        return text
+    else:
+        return ''
 
 
 def convert_to_float(text):
@@ -15,7 +38,11 @@ def convert_to_float(text):
             out_str += char
         # TODO: Use Country decimal notation
     out_str = out_str.replace(',', '.')
-    return float(out_str or 0.0)
+    try:
+        res = float(out_str or 0.0)
+    except:
+        res = 0.0
+    return res
 
 
 class MrpBomParameter(models.Model):
@@ -53,14 +80,21 @@ class MrpBom(models.Model):
         res = {}
         for line in self.parameter_ids:
             # Exception for use with bom.line.compute_line(): ['product_qty', 'product_id']:
-            if line.name in ['product_qty', 'product_id']:
-                raise ValidationError("The parameters name product_id or product_qty is reserved for output value")
+            if line.name in ['product_qty', 'product_id', 'product_price']:
+                raise ValidationError("The parameters name product_id, product_qty, product_price is reserved for output value")
             if line.attribute_id and line.attribute_id.convert_type == 'float':
                 value = convert_to_float(line.value)
             else:
                 value = line.value
             res.update({line.name: value})
         return res
+
+    def delete_attribute(self):
+        """delete previous attribute parameters"""
+        for bom in self:
+            for line in bom.parameter_ids:
+                if line.attribute_id:
+                    line.unlink()
 
     def update_custom_value(self):
         """ Get custom value"""
@@ -79,7 +113,14 @@ class MrpBom(models.Model):
     def create_attribute_value(self):
         """Get attribute value with conversion to float or text"""
         for bom in self:
-            for line in self.product_id.product_template_attribute_value_ids:
+            if bom.product_id:
+                attribute_value_ids = bom.product_id.product_template_attribute_value_ids
+            elif bom.product_tmpl_id:
+                attribute_value_ids = bom.product_tmpl_id.attribute_line_ids
+            else:
+                bom.delete_attribute()
+
+            for line in attribute_value_ids:
                 attribute_id = line.attribute_id.id
                 condition = [('bom_id', '=', bom.id), ('attribute_id', '=', attribute_id)]
                 parameter_ids = self.env['mrp.bom.parameter'].search(condition)
@@ -88,14 +129,17 @@ class MrpBom(models.Model):
                     parameters_vals = {
                         'bom_id': bom.id,
                         'attribute_id': attribute_id,
-                        'name': line.attribute_id.name,
-                        'value': line.name,
+                        'name': txt_cleanup(line.attribute_id.name),
                     }
+                    if bom.product_id:
+                        parameters_vals['value'] = line.name
                     parameter = self.env['mrp.bom.parameter'].create(parameters_vals)
                 else:
                     parameter = parameter_ids[0]
-                    parameter.value = line.name
+                    if bom.product_id:
+                        parameter.value = line.name
                 parameter.onchange_value()
+
             bom.update_custom_value()
 
 
@@ -127,6 +171,8 @@ class MrpBomLine(models.Model):
 
                 if localdict.get('product_qty'):
                     BOM_line.product_qty = localdict['product_qty']
+
+                # TODO: add price computing, product_price
 
 
 

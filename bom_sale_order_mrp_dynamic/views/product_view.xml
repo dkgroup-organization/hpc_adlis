@@ -10,6 +10,7 @@
                     <group>
                         <button name="create_bom" type="object" string="Create BOM" attrs="{'invisible': [('bom_id', '!=', False)]}"/>
                         <field name="bom_id"/>
+                        <field name="template_code"/>
                     </group>
                             <field name="bom_line_ids" widget="one2many">
                                 <tree string="Components" editable="bottom">

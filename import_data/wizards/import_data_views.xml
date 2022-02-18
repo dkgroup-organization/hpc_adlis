@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- wizard csv import -->
+    <record id="view_import_data_form" model="ir.ui.view">
+      <field name="name">_import_data_form</field>
+      <field name="model">import.data</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Import the CSV file">
+          <header>
+            <button name="button_import" string="Import" type="object" class="oe_highlight" attrs="{'invisible': [('preview', '=', '')]}"/>
+            <button string="Cancel" type="object" name="cancel" class="oe_link" special="cancel"/>
+          </header>
+          <group>
+            <field name="file_binary" filename="name" attrs="{'invisible': [('name', '!=', False)]}"/>
+            <field name="name" readonly="1" attrs="{'invisible': [('name', '=', False)]}"/>
+            <field name="data" invisible="1"/>
+
+            <field name="type_import" readonly="1"/>
+            <field name="type_import_html" readonly="1"/>
+            <field name="example_file" invisible="1"/>
+
+            <field name="import_date" attrs="{'invisible': [('import_date_todo', '=', False)], 'required':[('import_date_todo', '=', True)] }"/>
+            <field name="import_date_todo" invisible="1"/>
+
+              
+          </group>
+          <field name="configuration" readonly="1"/>
+          <notebook>
+            <page string="Preview">
+              <field name="preview" widget="html" style="overflow: auto;" nolabel="1"/>
+            </page>
+            <page string="Configuration">
+              <group>
+                <field name="model_id" readonly="1"/>
+                
+              </group>
+              <group colspan="4" col="4">
+                <field name="check_field"/>
+                <field name="encoding"/>
+                <field name="delimiter"/>
+                <field name="quotechar"/>
+                <field name="header"/>
+                <field name="date"/>
+                <field name="decimal"/>
+                <field name="filename"/>
+              </group>
+            </page>
+            <page string="Error" attrs="{'invisible': [('error','=','')]}">
+              <field name="error" widget="html" nolabel="1"/>
+            </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
+    <record id="action_import_product_categ" model="ir.actions.act_window">
+      <field name="name">Import Product category</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">import.data</field>
+      <field name="view_mode">form</field>
+      <field name="context">{'model_name':'product.category', 'example_file': 'configuration_famille_comptable.csv'}</field>
+      <field name="target">current</field>
+    </record>
+
+    <record id="action_import_account_tax" model="ir.actions.act_window">
+      <field name="name">Import Tax</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">import.data</field>
+      <field name="view_mode">form</field>
+      <field name="context">{'model_name':'account.tax'}</field>
+      <field name="target">current</field>
+    </record>
+
+    <record id="action_import_product_variant" model="ir.actions.act_window">
+      <field name="name">Import Product variant</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">import.data</field>
+      <field name="view_mode">form</field>
+      <field name="context">{'model_name':'product.product', 'example_file': 'product_variant.csv'}</field>
+      <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_import_compta" name="import CSV" parent="account.menu_finance_configuration" sequence="100"/>
+    <menuitem id="menu_action_import_product_categ" action="action_import_product_categ" parent="menu_import_compta" sequence="1"/>
+    <menuitem id="menu_action_import_product_variant" action="action_import_product_variant" parent="sale.prod_config_main" sequence="100"/>
+
+  </data>
+</odoo>

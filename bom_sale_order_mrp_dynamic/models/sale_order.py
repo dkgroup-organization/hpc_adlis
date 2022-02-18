@@ -37,7 +37,7 @@ class SaleOrderLine(models.Model):
 
         for line in self:
             if line.bom_id and line.product_custom_attribute_value_ids:
-                line.bom_id.code = line.name
+                line.bom_id.code = line.name + ' ' + line.order_id.name
                 line.bom_id.product_id = line.product_id
                 line.bom_id.sale_line_id = line
                 line.bom_id.create_attribute_value()

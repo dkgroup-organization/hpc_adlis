@@ -7,6 +7,10 @@ from odoo.exceptions import UserError
 class ProductAttribute(models.Model):
     _inherit = "product.attribute"
 
+    convert_type = fields.Selection([('float', 'Numeric'), ('text', 'Text')],
+                                    string='Value Type', default='text')
+
+    #auto_add = fields.boolean('Auto Add custom value')
 
     create_variant = fields.Selection([
         ('always', 'Instantly'),
@@ -19,6 +23,3 @@ class ProductAttribute(models.Model):
         - Never: Variants are never created for the attribute.
         Note: the variants creation mode cannot be changed once the attribute is used on at least one product.""",
         required=True)
-    convert_type = fields.Selection([('float', 'Numeric'), ('text', 'Text')],
-                                    string='Value Type', default='text')
-

@@ -9,6 +9,7 @@ class ProductTemplate(models.Model):
 
     bom_id = fields.Many2one('mrp.bom', 'Default BOM', compute='_compute_bom_id', store=False)
     bom_line_ids = fields.One2many('mrp.bom.line', related='bom_id.bom_line_ids', string="BOM line")
+    template_code = fields.Char('Template code')
 
     @api.depends('bom_ids')
     def _compute_bom_id(self):
@@ -42,6 +43,6 @@ class ProductTemplate(models.Model):
                     new_bom = copy_bom.copy()
                     new_bom.product_id = product
                     new_bom.create_attribute_value()
-                    product_id.bom_id = new_bom
+                    product.bom_id = new_bom
                     res |= new_bom
         return res

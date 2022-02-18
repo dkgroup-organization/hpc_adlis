@@ -16,7 +16,7 @@
     'license': 'AGPL-3',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale_management', 'product', 'mrp'],
+    'depends': ['base', 'sale_management', 'mrp'],
 
     # always loaded
     'data': [
