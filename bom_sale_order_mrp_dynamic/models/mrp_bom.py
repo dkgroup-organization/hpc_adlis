@@ -33,14 +33,17 @@ def txt_cleanup(text):
 def convert_to_float(text):
     "convert to float"
     out_str = ""
-    for char in text:
-        if char.isnumeric() or char in [',', '.']:
-            out_str += char
-        # TODO: Use Country decimal notation
-    out_str = out_str.replace(',', '.')
-    try:
-        res = float(out_str or 0.0)
-    except:
+    if text:
+        for char in text:
+            if char.isnumeric() or char in [',', '.']:
+                out_str += char
+            # TODO: Use Country decimal notation
+        out_str = out_str.replace(',', '.')
+        try:
+            res = float(out_str or 0.0)
+        except:
+            res = 0.0
+    else:
         res = 0.0
     return res
 
