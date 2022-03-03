@@ -1,0 +1,42 @@
+<odoo>
+    <template id="report_delivery_document_packaging" inherit_id="stock.report_delivery_document">
+        <xpath expr="//th[@name='th_sm_product']" position="after">
+            <th name="th_packaging_qty">Pack Qty</th>
+            <th name="th_product_packaging">Package</th>
+        </xpath>
+        <xpath expr="//tr[@t-foreach='lines']/td[1]" position="after">
+            <td name="td_packaging_qty"><span t-field="move.packaging_qty"/></td>
+            <td name="td_product_packaging"><span t-field="move.product_packaging.name"/></td>
+        </xpath>
+
+        <xpath expr="//th[@name='th_sb_product']" position="after">
+            <th name="th_packaging_qty">Pack Qty</th>
+            <th name="th_product_packaging">Package</th>
+        </xpath>
+        <xpath expr="//tr[@t-foreach='bo_lines']/td[1]" position="after">
+            <td name="td_packaging_qty"><span t-field="bo_line.packaging_qty"/></td>
+            <td name="td_product_packaging"><span t-field="bo_line.product_packaging.name"/></td>
+        </xpath>
+
+        <xpath expr="//th[@name='th_sml_quantity']" position="before">
+            <th name="th_packaging_qty">Pack Qty</th>
+            <th name="th_product_packaging">Package</th>
+        </xpath>
+    </template>
+    <template id="stock_report_delivery_aggregated_move_lines_packaging" inherit_id="stock.stock_report_delivery_aggregated_move_lines">
+        <xpath expr="//tr[@t-foreach='aggregated_lines']/td[@name='move_line_aggregated_qty_done']" position="before">
+            <td name="td_packaging_qty"><span t-esc="aggregated_lines[line]['packaging_qty']"/></td>
+            <td name="td_product_packaging"><span t-esc="aggregated_lines[line]['product_packaging']"/></td>
+        </xpath>
+    </template>
+    <template id="report_picking_inherit_packaging" inherit_id="stock.report_picking">
+       <xpath expr="//th[@name='th_product']" position="after">
+            <th name="th_packaging_qty">Pack Qty</th>
+            <th name="th_product_packaging">Package</th>
+        </xpath>
+        <xpath expr="//t[@t-foreach='move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)']/tr/td[1]" position="after">
+            <td name="td_packaging_qty"><span t-field="move.packaging_qty"/></td>
+            <td name="td_product_packaging"><span t-field="move.product_packaging.name"/></td>
+        </xpath>
+    </template>
+</odoo>

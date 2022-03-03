@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="action_url_scanner" model="ir.actions.act_url">
+            <field name="name">Scanner</field>
+            <field name="target">self</field>
+            <field name="url">/scanner?menu=main</field>
+        </record>
+
+    <menuitem id="menu_wms" sequence="50" name="WMS"/>
+        <menuitem id="menu_wms_scanner" parent="menu_wms" sequence="190" name="Scanner" action="action_url_scanner"/>
+        <menuitem id="menu_wms_configuration" parent="menu_wms" sequence="100" name="Configuration"/>
+            <menuitem id="menu_wms_scenario_configuration" parent="menu_wms_configuration" sequence="50" name="Scenario"/>
+                <menuitem id="menu_wms_menu" parent="menu_wms_scenario_configuration" sequence="10" action="act_open_wms_menu_view"/>
+                <menuitem id="menu_wms_scenario" parent="menu_wms_scenario_configuration" sequence="20" action="act_open_wms_scenario_view"/>
+</odoo>

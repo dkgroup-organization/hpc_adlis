@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="report_saleorder_document_inherit_packaging" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_description']" position="after">
+            <th name="th_packaging_qty" class="text-left">Pack Qty</th>
+            <th name="th_product_packaging" class="text-left">Package</th>
+        </xpath>
+        <xpath expr="//td[@name='td_name']" position="after">
+            <td name="td_packaging_qty"><span t-field="line.packaging_qty"/></td>
+            <td name="td_product_packaging"><span t-field="line.product_packaging.name"/></td>
+        </xpath>
+    </template>
+
+</odoo>

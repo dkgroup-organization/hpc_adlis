@@ -2,47 +2,41 @@
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    bom_id = fields.Many2one('mrp.bom', 'Default BOM', compute='_compute_bom_id', store=False)
+    bom_id = fields.Many2one('mrp.bom', 'Template Bill of material', compute='get_tmpl_bom_id', store=True)
     bom_line_ids = fields.One2many('mrp.bom.line', related='bom_id.bom_line_ids', string="BOM line")
     template_code = fields.Char('Template code')
 
-    @api.depends('bom_ids')
-    def _compute_bom_id(self):
+    def get_tmpl_bom_id(self):
         for product in self:
-            bom_ids = self.env['mrp.bom']
-            if product.is_product_variant:
-                bom_ids = self.env['mrp.bom'].search([('product_id', '=', product.id)])
-            else:
-                bom_ids = self.env['mrp.bom'].search(
-                    [('product_tmpl_id', '=', product.id), ('product_id', '=', False)])
+            bom_ids = self.env['mrp.bom'].search(
+                [('product_tmpl_id', '=', product.id), ('product_id', '=', False)])
             product.bom_id = bom_ids and bom_ids[0] or bom_ids
 
     def create_bom(self):
-        """Create default BOM"""
+        """Create Template BOM"""
         res = self.env['mrp.bom']
 
-        for product in self:
-            if not product.bom_id:
-                if not product.is_product_variant:
-                    # New template BOM
-                    bom_vals = {'product_tmpl_id': product.id, 'type': 'normal'}
-                    new_bom = self.env['mrp.bom'].create(bom_vals)
-                    new_bom.create_attribute_value()
-                    product.bom_id = new_bom
-                    res |= new_bom
-                else:
-                    if product.product_tmpl_id.bom_id:
-                        copy_bom = product.product_tmpl_id.bom_id
-                    else:
-                        copy_bom = product.product_tmpl_id.create_bom()
-                    new_bom = copy_bom.copy()
-                    new_bom.product_id = product
-                    new_bom.create_attribute_value()
-                    product.bom_id = new_bom
-                    res |= new_bom
+        for product_tmpl in self:
+
+            if product_tmpl.is_product_variant:
+                raise UserError("product.template create_bom")
+
+            if not product_tmpl.bom_id:
+                product_tmpl.get_tmpl_bom_id()
+
+            if not product_tmpl.bom_id:
+                # New template BOM
+                bom_vals = {'product_tmpl_id': product_tmpl.id, 'type': 'normal'}
+                new_bom = self.env['mrp.bom'].create(bom_vals)
+                new_bom.create_attribute_value()
+                product_tmpl.bom_id = new_bom
+                res |= new_bom
+
         return res

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_wms_scenario_tree" model="ir.ui.view">
+        <field name="name">wms.scenario.tree</field>
+        <field name="model">wms.scenario</field>
+        <field name="arch" type="xml">
+            <tree string="Scanner Scenario">
+                <field name="sequence"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_wms_scenario_form" model="ir.ui.view">
+        <field name="name">wms.scenario.form</field>
+        <field name="model">wms.scenario</field>
+        <field name="arch" type="xml">
+            <form string="Scanner Scenario">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                        <button name="open_diagram" type="object" string="Diagram" class="oe_stat_button" icon="fa-code-fork"/>
+
+                    </div>
+                    <group colspan="4" col="4">
+
+                        <field name="name"/>
+                        <field name="sequence"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="id" invisible="1"/>
+                    </group>
+
+                    <notebook colspan="4">
+                        <page string="Steps">
+                            <field name="step_ids" nolabel="1" context="{'default_scenario_id': id}">
+                                <tree string="Step">
+                                    <field name="name"/>
+                                    <field name="action_scanner"/>
+                                    <field name="action_variable"/>
+                                </tree>
+                                <form string="Step">
+                                    <group>
+                                        <field name="name"/>
+                                        
+                                    </group>
+                                    <notebook>
+                                        <page string="Action">
+                                        <group>
+                                            <field name="action_scanner"/>
+                                            <field name="action_model"/>
+                                            <field name="action_variable"/>
+                                            <field name="action_image"/>
+                                            <field name="action_message"/>
+                                            <field name="action_scan" invisible="1"/>
+                                            <field name="scenario_id" invisible="1"/>
+                                        </group>
+                                        </page>
+                                        <page string="Transition">
+                                            <separator string="Outgoing transitions" colspan="4"/>
+                                            <field name="out_transition_ids" colspan="4" nolabel="1">
+                                                <tree string="Transition">
+                                                    <field name="sequence"/>
+                                                    <field name="name"/>
+                                                    <field name="to_id"/>
+                                                    <field name="condition"/>
+                                                </tree>
+                                                <form string="Transition">
+                                                    <group colspan="4" col="4">
+                                                        <field name="name" colspan="4"/>
+                                                        <field name="sequence"/>
+                                                        <field name="to_id" domain="[('scenario_id','=', parent.scenario_id)]"/>
+                                                        <field name="condition" colspan="4"/>
+                                                        <newline/>
+                                                    </group>
+                                                </form>
+                                            </field>
+                                            <separator string="Incoming transitions" colspan="4"/>
+                                            <field name="in_transition_ids" colspan="4" nolabel="1">
+                                                <tree string="Transition">
+                                                    <field name="sequence"/>
+                                                    <field name="name"/>
+                                                    <field name="from_id"/>
+                                                    <field name="condition"/>
+                                                </tree>
+                                                <form string="Transition">
+                                                    <group colspan="4" col="4">
+                                                        <field name="name" colspan="4"/>
+                                                        <field name="sequence"/>
+                                                        <field name="from_id" domain="[('scenario_id','=', parent.scenario_id)]"/>
+                                                        <field name="condition" colspan="4"/>
+                                                        <newline/>
+                                                    </group>
+                                                </form>
+                                            </field>
+                                        </page>
+                                        <page string="Code">
+                                            <separator string="Enter the python code here" colspan="4"/>
+                                            <field name="python_code" colspan="4" nolabel="1" widget="ace" options="{'mode': 'python'}"/>
+                                        </page>
+
+                                    </notebook>
+                                    <newline/>
+                                </form>
+                            </field>
+                        </page>
+                                        <page string="QWEB render">
+                                                   <group>
+                                                           <field name="debug_mode"/>    
+                                                           <field name="scenario_image"/>       
+                                                   </group>
+                                        </page>
+                        <page string="Warehouses">
+                            <field name="warehouse_ids" nolabel="1" colspan="4"/>
+                        </page>
+                        <page string="Security">
+                            <group colspan="2" col="2">
+                                <separator string="Allowed Users" colspan="1"/>
+                                <separator string="Allowed Users Groups" colspan="1"/>
+                                <field name="user_ids" nolabel="1"/>
+                                <field name="group_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Note">
+                            <separator string="Add note, modification date, etc." colspan="4"/>
+                            <field name="notes" colspan="4" nolabel="1" widget="ace" options="{'mode': 'python'}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_wms_scenario_search" model="ir.ui.view">
+        <field name="name">wms.scenario.search</field>
+        <field name="model">wms.scenario</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search string="Scanner Scenario">
+                <field name="name"/>
+                <filter string="Scenario" name="scenario" domain="[('name','ilike',self)]" help="Directly launch a scenario"/>
+                <newline/>
+                <filter string="Archived" name="archived" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="view_wms_scenario_diagram" model="ir.ui.view">
+        <field name="name">wms.scenario.diagram</field>
+        <field name="model">wms.scenario</field>
+        <field name="arch" type="xml">
+            <diagram_plus string="Scenario Editor">
+                <node object="wms.scenario.step" 
+                      shape="rectangle:rectangle==True" 
+                      bg_color_field="bg_color"
+                      fg_color_field="fg_color">
+
+                    <field name="name"/>
+                    <field name="bgcolor_expr"/>
+                    <field name="bg_color"/>
+                    <field name="fg_color"/>
+                </node>
+                <arrow object="wms.scenario.transition" 
+                       source="from_id" 
+                       destination="to_id" 
+                       label="['name']">
+                    <field name="name"/>
+                    <field name="from_id"/>
+                    <field name="to_id"/>
+                </arrow>
+            </diagram_plus>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_wms_scenario_view">
+        <field name="name">Scanner Scenario</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wms.scenario</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+    <record model="ir.actions.act_window.view" id="act_open_wms_scenario_view_tree">
+        <field name="act_window_id" ref="act_open_wms_scenario_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_wms_scenario_tree"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="act_open_wms_scenario_view_form">
+        <field name="act_window_id" ref="act_open_wms_scenario_view"/>
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_wms_scenario_form"/>
+    </record>
+</odoo>

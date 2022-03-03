@@ -1,0 +1,18 @@
+input:focus {background-color: #CCFFCC}
+input {height: 40px; width: 300px; font-size: 30px;}
+button {padding: 0;border: none; background: none;}
+h2 {padding: 0;border: none; margin:0;}
+h3 {padding: 0;border: none; margin:0;}
+form {padding: 0;border: none; margin:0;}
+img {border: 0;}
+table {width: 100%; border-spacing: 2px 0px;}
+td {}
+body {font-size: 30px;}
+
+.warning {background-color: red;}
+.user {color: grey; font-weight:normal; font-size: 30px;}
+.img_logo {max-width:280px; height:auto; width:auto;}
+.img_menu {width:65px; height:65px; vertical-align: text-top;}
+.img_small {width:40px; height:40px; vertical-align: text-top;}
+.screen_size {width: 470px; background-color: white;}
+.div_right {float: right;}

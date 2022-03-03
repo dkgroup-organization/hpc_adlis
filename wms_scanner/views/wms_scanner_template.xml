@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <template id="scanner_html_index" name="scanner.html.index">
+      <html>
+        <t t-call="wms_scanner.scanner_html_header"/>
+        <t t-call="wms_scanner.scanner_html_body"/>
+      </html>
+    </template>
+    <!-- HEADER -->
+    <template id="scanner_html_header" name="scanner.html.header">
+      <head>
+        <title>SCANNER</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <t t-if="css">
+          <link rel="stylesheet" type="text/css" t-att-href="css"/>
+        </t>
+        <script src="wms_scanner/static/src/js/http_scanner.js"/>
+        <t t-if="script">
+          <script type="text/javascript">
+            <t t-foreach="script" t-as="script_item">
+              <t t-raw="script_item"/>
+            </t>
+          </script>
+        </t>
+      </head>
+    </template>
+    <!-- BODY -->
+    <template id="scanner_html_body" name="scanner.html.body">
+      <body onload="FocusScan()">
+        <div id="scanner_content" class="screen_size">
+          <table>
+            <t t-call="wms_scanner.scanner_body_header"/>
+            <t t-call="wms_scanner.scanner_menu"/>
+            <!-- PAGE -->
+            <t t-if="page_body">
+              <t t-set="page" t-value="page_body"/>
+              <t t-call="wms_scanner.scanner_page_origin_message"/>
+              <t t-call="wms_scanner.scanner_page_printer"/>
+              <t t-call="wms_scanner.scanner_page_pack"/>
+              <t t-call="wms_scanner.scanner_page_origin_location"/>
+              <t t-call="wms_scanner.scanner_page_origin_product"/>
+              <t t-call="wms_scanner.scanner_page_origin_qty"/>
+              <t t-call="wms_scanner.scanner_page_dest_location"/>
+              <t t-call="wms_scanner.scanner_page_result_package"/>
+              <t t-call="wms_scanner.scanner_page_operation"/>
+              <t t-call="wms_scanner.scanner_page_form"/>
+              <t t-call="wms_scanner.scanner_page_warning"/>
+              <t t-call="wms_scanner.scanner_page_list_preparation"/>
+              <t t-call="wms_scanner.scanner_page_list_picking"/>
+              <t t-call="wms_scanner.scanner_page_list_location"/>
+              <t t-call="wms_scanner.scanner_page_info_product"/>
+              <t t-call="wms_scanner.scanner_page_info_location"/>
+              <t t-call="wms_scanner.scanner_page_info_pack"/>
+              <t t-call="wms_scanner.scanner_page_button"/>
+            </t>
+            <t t-call="wms_scanner.scanner_page_debug"/>
+          </table>
+        </div>
+      </body>
+    </template>
+    <!-- HEADER TABLE -->
+    <template id="scanner_body_header" name="scanner.body.header">
+      <tr>
+        <td>
+          <t t-if="page_header">
+            <t t-if="page_header.get('left_href')">
+              <a t-att-href="page_header.get('left_href')">
+                <img t-att-src="img_path + page_header.get('left_img', 'default.jpg')" class="img_menu"/>
+              </a>
+            </t>
+            <t t-if="page_header.get('goback')">
+              <button onclick="goBack()">
+                <img t-att-src="img_path + 'goback.jpg'" class="img_menu"/>
+              </button>
+            </t>
+          </t>
+        </td>
+        <td>
+          <t t-if="page_header">
+            <t t-if="page_header.get('logo_img')">
+              <img t-att-src="img_path + page_header['logo_img']" class="img_logo"/>
+            </t>
+            <t t-if="page_header.get('right_img')">
+              <img t-att-src="img_path + page_header['right_img']" class="img_small"/>
+            </t>
+            <t t-esc="page_header.get('right_txt', '')"/>
+          </t>
+          <t t-if="page_header.get('right_name')">
+            <center>
+              <small>
+                <font color="grey">
+                  <t t-esc="page_header.get('right_name', '')" class="user"/>
+                </font>
+              </small>
+            </center>
+          </t>
+        </td>
+      </tr>
+    </template>
+    <!-- MENU -->
+    <template id="scanner_menu" name="scanner.menu">
+      <t t-if="menu">
+        <t t-foreach="menu" t-as="menu_item">
+          <tr>
+            <td>
+              <a t-att-href="menu_item.get('left_href', '')">
+                <img t-att-src="img_path + menu_item.get('left_img', 'default.jpg')" class="img_menu"/>
+              </a>
+            </td>
+            <td>
+              <a t-att-href="menu_item.get('left_href', '')">
+                <strong>
+                  <t t-esc="menu_item.get('right_txt', '')"/>
+                </strong>
+              </a>
+            </td>
+          </tr>
+        </t>
+      </t>
+    </template>
+    <!-- SCAN PAGE printer_id -->
+    <template id="scanner_page_printer" name="scanner.page.printer">
+      <t t-if="page.get('printer_id')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'printer.jpg'" class="img_small"/>
+          </td>
+          <td>
+            <small>
+              <t t-esc="page['printer_id'].name"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE operation -->
+    <template id="scanner_page_operation" name="scanner.page.operation">
+      <t t-if="page.get('operation_id')">
+        <tr>
+          <td>
+          </td>
+          <td>
+            <small>
+              <t t-if="not page.get('location_origin_id')">
+                <img t-att-src="img_path + 'location.jpg'" class="img_small"/>
+                <t t-esc="page['operation_id'].location_id.name"/>
+                <br/>
+              </t>
+              <t t-if="not page.get('product_origin_id')">
+                <img t-att-src="img_path + 'product.jpg'" class="img_small"/>
+                <t t-if="page['operation_id'].product_id.default_code">
+                  <t t-esc="'[' + page['operation_id'].product_id.default_code + '] '"/>
+                </t>
+                <t t-esc="page['operation_id'].product_id.name"/>
+                <br/>
+              </t>
+              <t t-if="not page.get('origin_qty')">
+                <img t-att-src="img_path + 'qty.jpg'" class="img_small"/>
+                <t t-esc="page['operation_id'].product_qty"/>
+                <t t-esc="page['operation_id'].product_uom_id.name"/>
+              </t>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE  pack -->
+    <template id="scanner_page_pack" name="scanner.page.pack">
+      <t t-if="page.get('pack_id')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'pack.jpg'" class="img_small"/>
+          </td>
+          <td>
+            <small>
+              <t t-esc="page['pack_id'].name"/>
+            </small>
+            <t t-if="page.get('quants')">
+              <ul>
+                <t t-foreach="page['quants']" t-as="quant">
+                  <li>
+                    <t t-esc="quant.qty"/>
+                    <t t-esc="quant.product_id.uom_id.name"/>
+                    <img t-att-src="img_path + 'blockdevice-3.jpg'" class="img_small"/>
+                    <t t-esc="quant.product_id.name"/>
+                  </li>
+                </t>
+              </ul>
+            </t>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE origin location -->
+    <template id="scanner_page_origin_location" name="scanner.page.origin.location">
+      <t t-if="page.get('location_origin_id')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'location.jpg'" class="img_small"/>
+          </td>
+          <td>
+            <small>
+              <t t-esc="page['location_origin_id'].name"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE origin product -->
+    <template id="scanner_page_origin_product" name="scanner.page.origin.product">
+      <t t-if="page.get('product_origin_id')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'product.jpg'" class="img_small"/>
+          </td>
+          <td>
+            <small>
+              <t t-if="page['product_origin_id'].default_code">
+                <t t-esc="'[' + page['product_origin_id'].default_code + '] '"/>
+              </t>
+              <t t-esc="page['product_origin_id'].name"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE origin qty -->
+    <template id="scanner_page_origin_qty" name="scanner.page.origin.qty">
+      <t t-if="page.get('origin_qty')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'qty.jpg'" class="img_small"/>
+          </td>
+          <td>
+            <small>
+              <t t-esc="page['origin_qty']"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE destination location -->
+    <template id="scanner_page_dest_location" name="scanner.page.dest.location">
+      <t t-if="page.get('location_dest_id')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'location.jpg'" class="img_small"/>
+          </td>
+          <td>
+            <small>
+              <t t-esc="page['location_dest_id'].name"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE result package -->
+    <template id="scanner_page_result_package" name="scanner.page.result.package">
+      <t t-if="page.get('result_package_id')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'pack.jpg'" class="img_small"/>
+          </td>
+          <td>
+            <small>
+              <t t-esc="page['result_package_id'].name"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE origin message -->
+    <template id="scanner_page_origin_message" name="scanner.page.origin.message">
+      <t t-if="page.get('origin_message')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'gaim-3.jpg'" class="img_menu"/>
+          </td>
+          <td>
+            <small>
+              <t t-raw="page['origin_message']"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE scan form -->
+    <template id="scanner_page_form" name="scanner.page.form">
+      <t t-if="not page.get('hide_scan')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + page.get('left_img', 'scan.jpg')" border="0" class="img_menu"/>
+          </td>
+          <td>
+            <form action="scanner" method="post">
+              <t t-if="page.get('csrf_token')">
+                <input type="hidden" name="csrf_token" t-att-value="page['csrf_token']"/>
+              </t>
+              <t t-if="page.get('scan_type')">
+                <input type="hidden" name="scan_type" t-att-value="page['scan_type']"/>
+              </t>
+              <t t-if="response">
+                <t t-foreach="response" t-as="key">
+                  <t t-if="key in ['page']">
+                    <input type="hidden" t-att-name="key" t-att-value="response[key]"/>
+                  </t>
+                </t>
+              </t>
+              <input type="text" id="scan" name="scan" value=""/>
+              <t t-if="page.get('scan_type') not in ['none', 'float', 'text']">
+                <t t-if="page.get('zxing')">
+                  <a t-att-href="page['zxing']">
+                    <img t-att-src="img_path + 'scan.jpg'" border="0" class="img_small"/>
+                  </a>
+                </t>
+              </t>
+              <t t-if="page.get('scan_type') in ['float', 'text']">
+                <button type="submit" value="valider">
+                  <img t-att-src="img_path + 'dialog-ok-apply-6.jpg'" border="0" class="img_small"/>
+                </button>
+              </t>
+            </form>
+            <t t-raw="page.get('right_html', '')"/>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN PAGE -list default_location -->
+    <template id="scanner_page_list_location" name="scanner.page.list.location">
+      <t t-if="False and page.get('default_location_ids')">
+        <t t-foreach="page['default_location_ids']" t-as="default_location">
+          <tr>
+            <td>
+              
+            </td>
+            <td>
+              <a t-att-href="'scanner?page=' + response.get('page') + '&amp;scan_type=location_id&amp;scan=' + str(default_location.id) ">
+                <t t-if="not default_location.scrap_location">
+                  <img t-att-src="img_path + 'location.jpg'" class="img_small"/>
+                </t>
+                <t t-if="default_location.scrap_location">
+                  <img t-att-src="img_path + 'REBUT.jpg'" class="img_small"/>
+                </t>
+                <t t-esc="default_location.name"/>
+              </a>
+            </td>
+          </tr>
+        </t>
+      </t>
+    </template>
+    <!-- SCAN PAGE -list preparation -->
+    <template id="scanner_page_list_preparation" name="scanner.page.list.preparation">
+      <t t-if="page.get('preparation_ids')">
+        <t t-foreach="page['preparation_ids']" t-as="preparation">
+          <tr>
+            <td>
+              
+            </td>
+            <td>
+              <a t-att-href="'scanner?page=' + response.get('page') + '&amp;scan_type=preparation_id' + '&amp;scan=' + str(preparation.id)">
+                <img t-att-src="img_path + 'edit-paste-4.jpg'" class="img_small"/>
+                <t t-esc="preparation.name"/>
+              </a>
+            </td>
+          </tr>
+        </t>
+      </t>
+    </template>
+    <!-- SCAN PAGE -list picking -->
+    <template id="scanner_page_list_picking" name="scanner.page.list.picking">
+      <t t-if="page.get('picking_ids')">
+        <t t-foreach="page['picking_ids']" t-as="picking">
+          <tr>
+            <td>
+              
+            </td>
+            <td>
+              <a t-att-href="'scanner?page=' + response.get('page') + '&amp;scan_type=picking_id'  + '&amp;scan=' + str(picking.id)">
+                <img t-att-src="img_path + 'edit-paste-4.jpg'" class="img_small"/>
+                <t t-esc="picking.name"/>
+              </a>
+              <t t-if="picking.partner_id">
+                <br/>
+                <t t-esc="picking.partner_id.name" class="user"/>
+              </t>
+            </td>
+          </tr>
+        </t>
+      </t>
+    </template>
+    <!-- SCAN PAGE -warning -->
+    <template id="scanner_page_warning" name="scanner.page.warning">
+      <t t-if="page.get('warning')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'dialog-warning-2.jpg'" class="img_menu"/>
+          </td>
+          <td class="warning">
+            <t t-raw="page.get('warning')"/>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN INFO PAGE -product_id -->
+    <template id="scanner_page_info_product" name="scanner.page.info.product">
+      <t t-if="page.get('info_product')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'product.jpg'" class="img_menu"/>
+          </td>
+          <td>
+            <t t-if="page['info_product'].default_code">
+              <t t-esc="'[' + page['info_product'].default_code + ']'"/>
+            </t>
+            <t t-esc="page['info_product'].name"/>
+            <t t-if="page.get('quants')">
+              <ul>
+                <t t-foreach="page['quants']" t-as="quant">
+                  <li>
+                    <t t-esc="quant.qty"/>
+                    <t t-esc="quant.product_id.uom_id.name"/>
+                    <img t-att-src="img_path + 'location.jpg'" class="img_small"/>
+                    <t t-esc="quant.location_id.name"/>
+                    <img t-if="quant.reservation_id" t-att-src="img_path + 'object-locked.jpg'" class="img_small"/>
+                    <img t-if="quant.package_id" t-att-src="img_path + 'emblem-package-2.jpg'" class="img_small"/>
+                  </li>
+                </t>
+              </ul>
+            </t>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN INFO PAGE -location_id -->
+    <template id="scanner_page_info_location" name="scanner.page.info.location">
+      <t t-if="page.get('info_location')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'location.jpg'" class="img_menu"/>
+          </td>
+          <td>
+            <t t-esc="page['info_location'].name"/>
+            <t t-if="page.get('quants')">
+              <ul>
+                <t t-foreach="page['quants']" t-as="quant">
+                  <li>
+                    <t t-esc="quant.qty"/>
+                    <t t-esc="quant.product_id.uom_id.name"/>
+                    <img t-att-src="img_path + 'blockdevice-3.jpg'" class="img_small"/>
+                    <t t-esc="quant.product_id.name"/>
+                    <img t-if="quant.reservation_id" t-att-src="img_path + 'object-locked.jpg'" class="img_small"/>
+                    <img t-if="quant.package_id" t-att-src="img_path + 'emblem-package-2.jpg'" class="img_small"/>
+                  </li>
+                </t>
+              </ul>
+            </t>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCAN INFO PAGE -pack_id  pack_location_id-->
+    <template id="scanner_page_info_pack" name="scanner.page.info.pack">
+      <t t-if="page.get('info_pack')">
+        <t t-if="page.get('info_pack_location')">
+          <tr>
+            <td>
+              <img t-att-src="img_path + 'location.jpg'" class="img_menu"/>
+            </td>
+            <td>
+              <t t-esc="page['info_pack_location'].name"/>
+            </td>
+          </tr>
+        </t>
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'package-x-generic.jpg'" class="img_menu"/>
+          </td>
+          <td>
+            <t t-esc="page['info_pack'].name"/>
+            <t t-if="page.get('quants')">
+              <ul>
+                <t t-foreach="page['quants']" t-as="quant">
+                  <li>
+                    <t t-esc="quant.qty"/>
+                    <t t-esc="quant.product_id.uom_id.name"/>
+                    <img t-att-src="img_path + 'blockdevice-3.jpg'" class="img_small"/>
+                    <t t-esc="quant.product_id.name"/>
+                    <img t-if="quant.reservation_id" t-att-src="img_path + 'object-locked.jpg'" class="img_small"/>
+                    <img t-if="quant.package_id" t-att-src="img_path + 'emblem-package-2.jpg'" class="img_small"/>
+                  </li>
+                </t>
+              </ul>
+            </t>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- BUTTON OK and Cancel -->
+    <template id="scanner_page_button" name="scanner.page.button">
+      <t t-if="page.get('button_message')">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'dialog-question-2.jpg'" class="img_menu"/>
+          </td>
+          <td>
+            <small>
+              <t t-raw="page['button_message']"/>
+            </small>
+          </td>
+        </tr>
+      </t>
+      <t t-if="page.get('button_ok') or page.get('button_cancel') or page.get('button_next')">
+        <tr>
+          <td/>
+          <td>
+            <t t-if="page.get('button_ok')">
+              <a t-att-href="'scanner?page=' + response.get('page') + '&amp;button=ok'">
+                <img t-att-src="img_path + 'dialog-ok-apply-6.jpg'" class="img_small"/>
+                <t t-esc="page['button_ok']"/>
+              </a>
+              <br/>
+            </t>
+            <t t-if="page.get('button_next')">
+              <a t-att-href="'scanner?page=' + response.get('page') + '&amp;button=next'">
+                <img t-att-src="img_path + 'arrow-right-double-3.jpg'" class="img_small"/>
+                <t t-esc="page['button_next']"/>
+              </a>
+              <br/>
+            </t>
+            <t t-if="page.get('button_no')">
+              <a t-att-href="'scanner?page=' + response.get('page') + '&amp;button=no'">
+                <img t-att-src="img_path + 'document-close-2.jpg'" class="img_small"/>
+                <t t-esc="page['button_no']"/>
+              </a>
+              <br/>
+            </t>
+            <t t-if="page.get('button_cancel')">
+              <div class="div_right">
+                <a t-att-href="'scanner?page=' + response.get('page') + '&amp;button=cancel'">
+                  <img t-att-src="img_path + 'dialog-cancel-4.jpg'" class="img_small"/>
+                  <t t-esc="page['button_cancel']"/>
+                </a>
+              </div>
+            </t>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- DEBUG PAGE -->
+    <template id="scanner_page_debug" name="scanner.page.debug">
+      <t t-if="error">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'emblem-system-2.jpg'" class="img_menu"/>
+          </td>
+          <td>
+            <t t-esc="error"/>
+          </td>
+        </tr>
+      </t>
+      <t t-if="debug_html">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'tools-report-bug.jpg'" class="img_menu"/>
+          </td>
+          <td>
+            <t t-raw="debug_html"/>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- END -->
+  </data>
+</odoo>

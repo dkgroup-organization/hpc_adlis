@@ -1,0 +1,1600 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* wms_scanner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-27 14:21+0000\n"
+"PO-Revision-Date: 2020-03-27 14:21+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid " and the same location. Please first validate the previous inventory: "
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "-- DATA --"
+msgstr "-- DONNEE --"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "<br/>Please, Keep only one general inventory opening before start"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.scanner_scenario_debug
+msgid ""
+"<small>\n"
+"                <font color=\"grey\">Debug mode</font>\n"
+"              </small>"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.scanner_scenario_blank
+msgid ""
+"<strong>\n"
+"                  Blank template\n"
+"                </strong>"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.scanner_scenario_construction
+msgid "<strong>The scenario is currently under construction</strong>"
+msgstr "<strong>Le scénario est en cours de developpement</strong>"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Action"
+msgstr "Action"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__active
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__active
+msgid "Active"
+msgstr "Active"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Add Product"
+msgstr "Ajouter un produit"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Add note, modification date, etc."
+msgstr "Ajouter des notes"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Add product"
+msgstr "Ajouter des produits"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Add this Product"
+msgstr "Ajouter un produit"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "All mouvements is done"
+msgstr "Tous les mouvements sont terminés"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__group_ids
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__group_ids
+msgid "Allowed Groups"
+msgstr "Groupes authorisés"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__user_ids
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__user_ids
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Allowed Users"
+msgstr "Utilisateurs authorisés"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Allowed Users Groups"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario__name
+msgid "Appear on barcode reader screen."
+msgstr "Visible à l'écran du scanner"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_menu_search
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_search
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__bg_color
+msgid "Background color"
+msgstr "Couleur de fond"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__bgcolor_expr
+msgid "Background color expression"
+msgstr "Expression pour la couleur"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Barcode information"
+msgstr "Information sue le code à barre"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__css
+msgid "CSS"
+msgstr "CSS"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_session__state__cancel
+msgid "Cancelled"
+msgstr "Annulé"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__menu_code
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Code"
+msgstr "Code"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__company_id
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_menu__company_id
+msgid "Company to be used on this menu."
+msgstr "Sociétés authorisées pour ce menu"
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario__company_id
+msgid "Company to be used on this scenario."
+msgstr "Sociétés authorisées pour ce scénario"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__condition
+msgid "Condition"
+msgstr "Condition"
+
+#. module: wms_scanner
+#: model:ir.ui.menu,name:wms_scanner.menu_wms_configuration
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario.py:0
+#, python-format
+msgid "Copy of %s"
+msgstr "Copie de %s"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__create_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__create_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__create_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__create_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__create_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__create_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__create_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__create_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__debug
+msgid "Debug"
+msgstr "Debug"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__debug_mode
+msgid "Debug mode"
+msgstr "Mode Debug"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Diagram"
+msgstr "Diagrame"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_menu_search
+msgid "Directly launch a menu"
+msgstr "Menu"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_search
+msgid "Directly launch a scenario"
+msgstr "Scénario"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Disconnect"
+msgstr "Déconnecter"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__display_name
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__display_name
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__display_name
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__display_name
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__display_name
+msgid "Display Name"
+msgstr "Nom"
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_session__state__done
+msgid "Done"
+msgstr "Terminé"
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_session__state__draft
+msgid "Draft"
+msgstr "Broullion"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__end_date
+msgid "End Date"
+msgstr "Date de fin"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Enter quantity"
+msgstr "Entrer la quantité"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Enter quantity of new label to print"
+msgstr "Entrer la quantité d'étiquettes à imprimer"
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_text
+msgid "Enter text"
+msgstr "Saisir le texte"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Enter the code"
+msgstr "Saisir le code"
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Enter the python code here"
+msgstr "Saisir le code python"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Enter the quantity."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_float
+msgid "Enter value"
+msgstr "Saisir la valeur"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_transition.py:0
+#, python-format
+msgid ""
+"Error in condition for transition \"%s\" at line %d, offset %d:\n"
+"%s"
+msgstr "Error in condition for transition \"%s\" at line %d, offset %d:\n"
+"%s"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid ""
+"Error in python code for step \"%s\" at line %d, offset %d:\n"
+"%s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Expedition"
+msgstr "Expedition"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__fg_color
+msgid "Foreground color"
+msgstr "Couleur de texte"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__from_id
+msgid "From"
+msgstr "Depuis"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Function configure_page_header"
+msgstr "Function configure_page_header"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Function: configure_page_body"
+msgstr "Function: configure_page_body"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "GENERAL INVENTORY !"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Go to this address to install Android scanner"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Hello"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__id
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__id
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__id
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__id
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__id
+msgid "ID"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__ip
+msgid "IP"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_menu__active
+msgid "If check, this menu is available."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario__active
+msgid "If check, this object is always available."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__image_file
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__image_file
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__action_image
+msgid "Image filename"
+msgstr "Nom du fichier image"
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_session__state__confirm
+msgid "In Progress"
+msgstr "En cours"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__in_transition_ids
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Incoming transitions"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Information"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Install scanner"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Inventory"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "It is not the good location: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "It is not the good product %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Language"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu____last_update
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario____last_update
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step____last_update
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition____last_update
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__write_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__write_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__write_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__write_uid
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__write_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__write_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__write_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__write_date
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_menu__menu_type__logout
+msgid "Logout"
+msgstr "Déconnection"
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_menu__menu_type__menu
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_menu_search
+msgid "Menu"
+msgstr "Menu"
+
+#. module: wms_scanner
+#: model:ir.model,name:wms_scanner.model_wms_menu
+msgid "Menu for scanner"
+msgstr "Menu du scanner"
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__action_message
+msgid "Message"
+msgstr "Message"
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__message
+msgid "Message to user"
+msgstr "Message exemple"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Mode debug"
+msgstr "Mode debug"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Move pack"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Move product"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Moving"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__name
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__name
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__name
+msgid "Name"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_step__name
+msgid "Name of the step."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_transition__name
+msgid "Name of the transition."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "New mouvement to do"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "No"
+msgstr "Non"
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "No action"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__none
+msgid "Not defined"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Note"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__notes
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__notes
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__scenario_notes
+msgid "Notes"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__out_transition_ids
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Outgoing transitions"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Pack Inventory"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Pack inventory"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Pack inventory - "
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Pack move"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Packing"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__parent_id
+msgid "Parent menu"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Partial Inventory"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Partial inventory - "
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Pass"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Pick Product"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Pick product"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Please, check and close this old inventory before start a new one."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Preparation"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Print pack label"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Product inventory"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__python_code
+msgid "Python code"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_step__python_code
+msgid "Python code to execute."
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "QWEB render"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__question
+msgid "Question to user"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Receipt"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__rectangle
+msgid "Rectangle"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_menu__menu_type__wms
+#, python-format
+msgid "Return to WMS"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_picking_in
+msgid "Scan Picking in"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_picking_out
+msgid "Scan Picking out"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_preparation
+msgid "Scan Preparation"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_production
+msgid "Scan Production"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a barcode to have information."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a delivery or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a location or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a pack or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a pallet or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a preparation or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a printer or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a product or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a production lot or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a production or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a receipt or enter his code."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "Scan a weight or enter his value."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan barcode Expedition or choice one in the list"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan barcode Preparation"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan barcode Receipt or choice one in the list"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan barcode pack"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan barcode to get information"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan current Pack or a new empty pack"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan destination location barcode"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__action_scan
+msgid "Scan input"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_location
+msgid "Scan location"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan location: "
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_pack
+msgid "Scan pack"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_printer
+msgid "Scan printer"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan printer barcode"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_product
+msgid "Scan product"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan product barcode"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan product: "
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_prodlot
+msgid "Scan production lot"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan quantity: "
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_search
+msgid "Scan search information"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scan source product location barcode"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__scan_weight
+msgid "Scan weight"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.actions.act_url,name:wms_scanner.action_url_scanner
+#: model:ir.ui.menu,name:wms_scanner.menu_wms_scanner
+msgid "Scanner"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.actions.act_window,name:wms_scanner.act_open_wms_menu_view
+#: model:ir.ui.menu,name:wms_scanner.menu_wms_menu
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_menu_form
+msgid "Scanner Menu"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.actions.act_window,name:wms_scanner.act_open_wms_scenario_view
+#: model:ir.ui.menu,name:wms_scanner.menu_wms_scenario
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_menu_search
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_menu_tree
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_search
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_tree
+msgid "Scanner Scenario"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Scanner ZXING"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__action_scanner
+msgid "Scanner action"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model,name:wms_scanner.model_wms_session
+msgid "Scanner session"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario.py:0
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__scenario_id
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__step_ids
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__scenario_id
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__scenario_id
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_menu__menu_type__scenario
+#: model:ir.ui.menu,name:wms_scanner.menu_wms_scenario_configuration
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_search
+#, python-format
+msgid "Scenario"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_diagram
+msgid "Scenario Editor"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model,name:wms_scanner.model_wms_scenario
+msgid "Scenario for scanner"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_menu__scenario_id
+msgid "Scenario for this menu."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_step__scenario_id
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_transition__scenario_id
+msgid "Scenario for this step."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Screen 240 px"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Screen 320 px"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Screen 480 px"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Screen size"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Security"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__sequence
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__sequence
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_menu__sequence
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario__sequence
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_transition__sequence
+msgid "Sequence order."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__name
+msgid "Session"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Some generales inventories are opening. It is ambiguous."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid ""
+"Some partials inventories are opening!<br/>Please, close old inventories "
+"before start a new one"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid ""
+"Some partials inventories are opening!<br/>Please, close partial inventory "
+"before start a general inventory"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Some product have to be complete later."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__start_date
+msgid "Start Date"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Start Preparation ?"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Start expedition scanning ?"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Start receipt scanning ?"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__state
+msgid "Status"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Step"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model,name:wms_scanner.model_wms_scenario_step
+msgid "Step for scenario"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario__step_ids
+msgid "Step of the scenario."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_transition__to_id
+msgid "Step which is reached by this transition."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_transition__from_id
+msgid "Step which launches this transition."
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Steps"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_menu__notes
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario__notes
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_step__scenario_notes
+msgid "Store different notes, date and title for modification, etc..."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_menu__menu_type__scanner
+msgid "Test scanner"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The barcode is unreadable"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The date of your inventory is %s. It is ambiguous."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "The end step, it is posiible to have multiple end."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "The first step."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The inventory is registred, you can do a new product inventory"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid ""
+"The inventory line is registred, you can do a new product inventory in this "
+"pack"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The label is printing"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The mouvement is not registred"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The mouvement is registred, you can do a new move"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The mouvement is registred, you can do a new scan"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The pack is deleting, you can delete another pack"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The pack is moving, you can move another pack"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The product is in the pack, you can add a new product"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "The product:<br/> %s %s<br/>"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_transition__condition
+msgid ""
+"The transition is followed only if this condition is evaluated as True."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "There is a error with this barcode location: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "There is a error with this barcode printer: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario.py:0
+#, python-format
+msgid "There is a infinite loop in this scenario!"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "There is an error with this inventory line"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario.py:0
+#, python-format
+msgid "There is no starting step in this scenario"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "There is not enought quantity"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "There is not enought quantity in this location"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "There is not the good quantity"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "There is not the good quantity: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This barcode is unknow: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This barcode product is unknow: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This barcode reference %s products?"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This expedition is done or cancel, you can't change it'"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This expedition is unknow: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This pack is empty"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This pack is inside another pack. Please, move the parent pack: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This pack is not expected !"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This pack is unknow: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This package is not used for this picking"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This package is out of the warehouse, it can't be changed!"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This page is under construction"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This preparation is done or cancel, you can't change it'"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This preparation is unknow: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This product is not expected !"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This product is not expected ! Do you want to add it on receipt ?"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This product is not in this location"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This product is not in this pack"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This receipt is done or cancel, you can't change it'"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This receipt is unknow: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "This value is not valid: %s"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_transition__to_id
+msgid "To"
+msgstr ""
+
+#. module: wms_scanner
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Transition"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model,name:wms_scanner.model_wms_scenario_transition
+msgid "Transition for scenario"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_step__in_transition_ids
+msgid "Transitions which goes to the next step."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario_step__out_transition_ids
+msgid "Transitions which goes to this step."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Under construction"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Unpack all products"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Unpack products"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "Valide"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario_step__action_variable
+msgid "Variable to use"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.ui.menu,name:wms_scanner.menu_wms
+msgid "WMS"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_session__warehouse_id
+msgid "Warehouse"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__warehouse_ids
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_scenario__warehouse_ids
+#: model_terms:ir.ui.view,arch_db:wms_scanner.view_wms_scenario_form
+msgid "Warehouses"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_menu__warehouse_ids
+msgid "Warehouses for this menu."
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,help:wms_scanner.field_wms_scenario__warehouse_ids
+msgid "Warehouses for this scenario."
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "You can do a new expedition, the previous is finish"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "You can do a new preparation, the previous preparation is finish"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "You can do a new preparation, the previous preparation is finish.<br/>"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid ""
+"You cannot have two inventory adjustements in state 'in Progess' with the "
+"same product"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid ""
+"You cannot have two inventory adjustements in state 'in Progess' with the "
+"same product and the same location.<br/> Please first validate the previous "
+"inventory: "
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__end
+msgid "end"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_session.py:0
+#, python-format
+msgid "is out of the pack.<br/>You can pick another product"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__name
+msgid "name"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields.selection,name:wms_scanner.selection__wms_scenario_step__action_scanner__start
+msgid "start"
+msgstr ""
+
+#. module: wms_scanner
+#: model:ir.model.fields,field_description:wms_scanner.field_wms_menu__menu_type
+msgid "type"
+msgstr ""
+
+#. module: wms_scanner
+#: code:addons/wms_scanner/models/wms_scenario_step.py:0
+#, python-format
+msgid "what ?"
+msgstr ""

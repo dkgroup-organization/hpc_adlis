@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_wms_menu_tree" model="ir.ui.view">
+        <field name="name">wms.menu.tree</field>
+        <field name="model">wms.menu</field>
+        <field name="arch" type="xml">
+            <tree string="Scanner Scenario">
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="menu_type"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_wms_menu_form" model="ir.ui.view">
+        <field name="name">wms.menu.form</field>
+        <field name="model">wms.menu</field>
+        <field name="arch" type="xml">
+            <form string="Scanner Menu">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id" domain="[('menu_type', '=', 'menu')]"/>
+                        <field name="sequence"/>
+                    </group>
+                    <group>
+                        <field name="menu_type"/>
+                        <field name="scenario_id"/>
+                        <field name="image_file"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_wms_menu_search" model="ir.ui.view">
+        <field name="name">wms.menu.search</field>
+        <field name="model">wms.menu</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search string="Scanner Scenario">
+                <field name="name"/>
+                <filter string="Menu" name="menu" domain="[('name','ilike',self)]" help="Directly launch a menu"/>
+                <newline/>
+                <filter string="Archived" name="archived" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_wms_menu_view">
+        <field name="name">Scanner Menu</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wms.menu</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+    <record model="ir.actions.act_window.view" id="act_open_wms_menu_view_tree">
+        <field name="act_window_id" ref="act_open_wms_menu_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_wms_menu_tree"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="act_open_wms_menu_view_form">
+        <field name="act_window_id" ref="act_open_wms_menu_view"/>
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_wms_menu_form"/>
+    </record>
+</odoo>

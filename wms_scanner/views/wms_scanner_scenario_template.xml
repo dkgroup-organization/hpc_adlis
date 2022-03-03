@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <template id="wms_scanner_scenario_template" name="wms_scanner_scenario_template">
+      <html>
+        <t t-call="wms_scanner.scanner_scenario_header"/>
+        <t t-call="wms_scanner.scanner_scenario_body"/>
+      </html>
+    </template>
+    <!-- HEADER -->
+    <template id="scanner_scenario_header" name="scanner_scenario_header">
+      <head>
+        <title>SCANNER</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link t-if="css" rel="stylesheet" type="text/css" t-att-href="css"/>
+        <link t-else="" rel="stylesheet" type="text/css" href="wms_scanner/static/src/css/screen_320.css"/>
+        <script src="wms_scanner/static/src/js/wms_scanner.js"/>
+      </head>
+    </template>
+    <!-- BODY -->
+    <template id="scanner_scenario_body" name="scanner_scenario_body">
+      <body>
+        <div id="scanner_content" class="screen_size">
+	<t t-set="img_path" t-value="'wms_scanner/static/src/img/'"/>
+          <table>
+            <t t-call="wms_scanner.scanner_scenario_top"/>
+            <t t-if="step" t-call="wms_scanner.scanner_scenario_scan"/>
+            <t t-if="not step" t-call="wms_scanner.scanner_scenario_construction"/>
+            <t t-call="wms_scanner.scanner_scenario_warning"/>
+            <t t-call="wms_scanner.scanner_scenario_debug"/>
+          </table>
+        </div>
+      </body>
+    </template>
+    <!-- HEADER TABLE -->
+    <template id="scanner_scenario_top" name="scanner_scenario_top">
+      <tr>
+        <th>
+          <a t-att-href="'?menu=0'">
+            <img t-att-src="img_path + 'home.jpg'" class="img_scenario"/>
+          </a>
+        </th>
+        <th>
+            <t t-if="scenario.scenario_image">
+              <img t-att-src="img_path + scenario.scenario_image" class="img_small"/>
+            </t>
+          <t t-esc="scenario.name"/>
+          <center>
+            <small>
+              <font color="grey">
+                <t t-esc="user.name" class="user"/>
+              </font>
+            </small>
+          </center>
+        </th>
+      </tr>
+    </template>
+    <!-- SCENARIO STEP SCAN-->
+    <template id="scanner_scenario_scan" name="scanner_scenario_scan">
+      <t t-if="step.action_scan">
+        <tr>
+          <td>
+            <img t-att-src="img_path + (step.action_image or 'scan.jpg')" class="img_scenario"/>
+          </td>
+          <td>
+            <form action="scanner" method="post">
+              <input type="hidden" name="scenario" t-att-value="scenario.id"/>
+              <input type="text" id="scan" name="scan" value="" autocomplete="off"/>
+              <button type="submit" value="valider">
+                <img t-att-src="img_path + 'ok.jpg'" border="0" class="img_small"/>
+              </button>
+            </form>
+            <t t-raw="step.action_message or ''"/>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCENARIO UNDER CONSTRUCTION-->
+    <template id="scanner_scenario_construction" name="scanner_scenario_construction">
+      <t t-if="not step">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'construction.jpg'" class="img_scenario"/>
+          </td>
+          <td>
+            <strong>The scenario is currently under construction</strong>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- WARNIG -->
+    <template id="scanner_scenario_warning" name="scanner.page.warning">
+      <t t-if="warning">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'warning.jpg'" class="img_scenario"/>
+          </td>
+          <td class="warning">
+            <t t-raw="warning"/>
+          </td>
+        </tr>
+      </t>
+    </template>
+    <!-- SCENARIO DEBUG-->
+    <template id="scanner_scenario_debug" name="scanner_scenario_debug">
+      <t t-if="debug">
+        <tr>
+          <td>
+            <img t-att-src="img_path + 'bug.jpg'" class="img_scenario"/>
+          </td>
+          <td>
+            <center>
+              <small>
+                <font color="grey">Debug mode</font>
+              </small>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td/>
+          <td>
+            <t t-raw="debug"/>
+          </td>
+        </tr>
+      </t>
+    </template>
+  </data>
+</odoo>

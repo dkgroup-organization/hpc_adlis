@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <page name="variants" position="after">
 
-                <page name="boms" string="BOM" groups="product.group_product_variant">
+                <page name="boms" string="Bill of Material" groups="product.group_product_variant">
                     <group>
                         <button name="create_bom" type="object" string="Create BOM" attrs="{'invisible': [('bom_id', '!=', False)]}"/>
                         <field name="bom_id"/>

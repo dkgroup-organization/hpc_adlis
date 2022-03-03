@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="view_sale_order_line_bom_cost_gsd">
-        <field name="name">view.sale.order.line.bom.cost.gsd</field>
+    <record model="ir.ui.view" id="view_sale_order_line_bom_dynamic">
+        <field name="name">view.sale.order.line.bom.dynamic</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
-                <field name="bom_id" attrs="{'readonly': [('state', 'in', ('sale','done', 'cancel'))]}"  optional="hide"
-                       context="{'company_id': parent.company_id}"/>
+                <field name="bom_id" invisible="1"/>
+                <button name="button_open_bom" type="object" string="BOM" icon="fa-gears" attrs="{'invisible': [('bom_id', '=', False)]}" />
             </xpath>
+            
+            
+            
         </field>
     </record>
 

@@ -23,7 +23,7 @@ def txt_cleanup(text):
         text = text.strip()
         for char in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~\n':
             text = text.replace(char, ' ')
-        for char in [('   ', ' '), ('  ', ' '), (' ', '_')]:
+        for char in [('    ', ' '), ('   ', ' '), ('  ', ' '), (' ', '_')]:
             text = text.replace(char[0], char[1])
         return text
     else:
@@ -35,9 +35,9 @@ def convert_to_float(text):
     out_str = ""
     if text:
         for char in text:
+            # TODO: Use Country decimal notation function
             if char.isnumeric() or char in [',', '.']:
                 out_str += char
-            # TODO: Use Country decimal notation
         out_str = out_str.replace(',', '.')
         try:
             res = float(out_str or 0.0)
@@ -70,6 +70,7 @@ class MrpBom(models.Model):
     parameter_ids = fields.One2many('mrp.bom.parameter', 'bom_id', string='Parameters')
     sale_line_id = fields.Many2one('sale.order.line', "Sale line")
     sale_id = fields.Many2one('sale.order', 'Sale order', related='sale_line_id.order_id')
+    #product_custom_attribute_value_ids = fields.One2many('product.attribute.custom.value', related='sale_line_id.product_custom_attribute_value_ids', string="Custom Values")
 
     def compute_line(self, data={}):
         """Compute the line"""
@@ -149,6 +150,7 @@ class MrpBom(models.Model):
 class MrpBomLine(models.Model):
     _inherit = 'mrp.bom.line'
 
+    #condition_attribute_ids = fields.
     python_compute = fields.Text(string='Python Code', default="",
                                  help="Compute the new quantity and product.\n\n"
                                       ":param BOM_line: actual BOM line\n"
@@ -176,6 +178,7 @@ class MrpBomLine(models.Model):
                     BOM_line.product_qty = localdict['product_qty']
 
                 # TODO: add price computing, product_price
+                # TODO: add parameters on product
 
 
 

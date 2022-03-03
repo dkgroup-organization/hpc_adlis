@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+wms_scenario_user,wms_scenario_user,wms_scanner.model_wms_scenario,,1,0,0,0
+wms_scenario_manager,wms_scenario_manager,wms_scanner.model_wms_scenario,stock.group_stock_manager,1,1,1,1
+wms_scenario_step_user,wms_scenario_step_user,wms_scanner.model_wms_scenario_step,,1,0,0,0
+wms_scenario_step_manager,wms_scenario_step_manager,wms_scanner.model_wms_scenario_step,stock.group_stock_manager,1,1,1,1
+wms_scenario_transition_user,wms_scenario_transition_user,wms_scanner.model_wms_scenario_transition,,1,0,0,0
+wms_scenario_transition_manager,wms_scenario_transition_manager,wms_scanner.model_wms_scenario_transition,stock.group_stock_manager,1,1,1,1
+wms_menu_user,wms_menu_user,wms_scanner.model_wms_menu,,1,0,0,0
+wms_menu_manager,wms_menu_manager,wms_scanner.model_wms_menu,stock.group_stock_manager,1,1,1,1
+wms_session_user,scanner session,wms_scanner.model_wms_session,stock.group_stock_user,1,1,1,1

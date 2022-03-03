@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- BLANK TEMPLATE -->
+    <template id="scanner_scenario_blank" name="scanner_scenario_blank">
+      <html>
+        <head>
+          <title>SCANNER</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link t-if="css" rel="stylesheet" type="text/css" t-att-href="css"/>
+        <link t-else="" rel="stylesheet" type="text/css" href="wms_scanner/static/src/css/screen_320.css"/>
+        </head>
+
+        <body>
+        <t t-set="img_path" t-value="'wms_scanner/static/src/img/'"/>
+          <table>
+            <tr>
+              <td>
+                <a href="?menu=0">
+                  <img t-att-src="img_path + 'home.jpg'" class="img_menu"/>
+                </a>
+              </td>
+              <td>
+                <strong>
+                  Blank template
+                </strong>
+              </td>
+            </tr>
+            <t t-if="debug">
+              <tr>
+                <td>
+                  <img t-att-src="img_path + 'bug.jpg'" class="img_menu"/>
+                </td>
+                <td>
+                  <t t-raw="debug"/>
+                </td>
+              </tr>
+            </t>
+          </table>
+        </body>
+      </html>
+    </template>
+  </data>
+</odoo>

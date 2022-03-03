@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- SCANNER TEMPLATE -->
+    <template id="scanner_zxing2" name="scanner_zxing2">
+      <html lang="en">
+        <head>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <meta name="author" content="ZXing for JS"/>
+          <title>ZXing TypeScript | Demo &amp; Examples</title>
+        </head>
+        <body>
+          <main class="wrapper" style="padding-top:2em">
+            <section class="container" id="demo-content">
+              <h1 class="title">Scan barcode from Video Camera</h1>
+              <div>
+                <video id="video" width="300" height="200" style="border: 1px solid gray" autoplay="true" muted="true" playsinline="true"/>
+              </div>
+              <label>Result:</label>
+              <pre>
+                <code id="result"/>
+              </pre>
+            </section>
+          </main>
+          <script type="text/javascript" src="/wms_scanner/static/src/js/zxing.min.js"/>
+          <script type="text/javascript">
+
+		const codeReader = new ZXing.BrowserBarcodeReader();
+		codeReader
+		  .decodeOnceFromVideoDevice(undefined, 'video')
+		  .then(result => document.getElementById('result').textContent = result.text)
+		  .catch(err => console.error(err));
+
+    </script>
+        </body>
+      </html>
+    </template>
+  </data>
+</odoo>

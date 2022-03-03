@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <template id="wms_scanner_menu_template" name="wms_scanner_menu_template">
+      <html>
+        <t t-call="wms_scanner.scanner_html_header"/>
+        <t t-call="wms_scanner.scanner_menu_body"/>
+      </html>
+    </template>
+    <!-- HEADER -->
+    <template id="scanner_html_header" name="scanner_html_header">
+      <head>
+        <title>SCANNER</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link t-if="css" rel="stylesheet" type="text/css" t-att-href="css"/>
+        <link t-else="" rel="stylesheet" type="text/css" href="wms_scanner/static/src/css/screen_320.css"/>
+        <script src="wms_scanner/static/src/js/wms_scanner.js"/>
+      </head>
+      
+    </template>
+    <!-- BODY -->
+    <template id="scanner_menu_body" name="scanner_menu_body">
+      <body>
+        <div id="scanner_content" class="screen_size">
+	<t t-set="img_path" t-value="'wms_scanner/static/src/img/'"/>
+          <table>
+            <t t-call="wms_scanner.scanner_menu_header"/>
+            <t t-call="wms_scanner.scanner_menu_list"/>
+          </table>
+        </div>
+      </body>
+    </template>
+    <!-- HEADER TABLE -->
+    <template id="scanner_menu_header" name="scanner_menu_header">
+      <tr>
+        <td>
+          <t t-if="menu">
+            <t t-if="menu[0].parent_id">
+              <a t-att-href="menu[0].parent_id.parent_id and menu[0].parent_id.parent_id.menu_code or '?menu=0'">
+                <img t-att-src="img_path + (menu[0].parent_id.image_file or 'default.jpg')" class="img_menu"/>
+              </a>
+            </t>
+          </t>
+          <t t-if="not menu">
+            <a href="?menu=0">
+              <img t-att-src="img_path + 'home.jpg'" class="img_menu"/>
+            </a>
+          </t>
+        </td>
+        <td>
+          <t t-if="user">
+            <t t-esc="user.company_id.name"/>
+            <center>
+              <small>
+                <font color="grey">
+                  <t t-esc="user.name" class="user"/>
+                </font>
+              </small>
+            </center>
+          </t>
+        </td>
+      </tr>
+    </template>
+    <!-- MENU -->
+    <template id="scanner_menu_list" name="scanner_menu_list">
+      <t t-if="menu">
+        <t t-foreach="menu" t-as="menu_item">
+          <tr>
+            <td>
+              <a t-att-href="menu_item.menu_code">
+                <img t-att-src="img_path + (menu_item.image_file or 'default.jpg')" class="img_menu"/>
+              </a>
+            </td>
+            <td>
+              <a t-att-href="menu_item.menu_code">
+                <strong>
+                  <t t-esc="menu_item.name"/>
+                </strong>
+              </a>
+            </td>
+          </tr>
+        </t>
+      </t>
+    </template>
+  </data>
+</odoo>
