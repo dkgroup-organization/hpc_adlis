@@ -77,6 +77,8 @@ class MrpBom(models.Model):
         for bom in self:
             for line in bom.bom_line_ids:
                 line.compute_line(data=data)
+            for line in bom.operation_ids:
+                line.compute_line(data=data)
 
     def get_attribute_value(self):
         """Get attribute value with conversion to float or text"""

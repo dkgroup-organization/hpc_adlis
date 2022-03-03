@@ -19,31 +19,18 @@ class ProductProduct(models.Model):
 
     def create_bom(self, default=None):
         "Create BOM with information from template BOM"
-        for product in self:
-            # Check starting condition
-            if not product.is_product_variant:
-                raise UserError("product.product create_bom error")
-            if not product.bom_id:
-                product.get_bom_id()
-            if product.bom_id:
-                continue
 
-            if not product.product_tmpl_id.bom_id:
-                product.product_tmpl_id.get_tmpl_bom_id()
-                if not product.product_tmpl_id.bom_id:
-                    raise UserError("There is no template of bill of material for this product: %s"
-                                    "\n Please, create bill of material on the template product before" % product.name)
+        def check_constraint_attribute(lines, product):
+            """unlink line when constraint is not ok, the lines can be :
 
-            # Create new BOM based on template BOM
-            new_bom = product.product_tmpl_id.bom_id.copy(default or {})
-            unlink_line = self.env['mrp.bom.line']
+            """
+            unlink_line = self.env[lines._name]
 
-            # adjust BOM line with constraints, mrp.bom._check_bom_lines() must be ok
-            for bom_line in new_bom.bom_line_ids:
+            for line in lines:
                 # Check the constraint
                 constraint_attribute = {}
                 # list the attribute needed
-                for attribute_value in bom_line.bom_product_template_attribute_value_ids:
+                for attribute_value in line.bom_product_template_attribute_value_ids:
                     if attribute_value.attribute_id.id not in list(constraint_attribute.keys()):
                         constraint_attribute[attribute_value.attribute_id.id] = attribute_value
                     else:
@@ -52,12 +39,28 @@ class ProductProduct(models.Model):
                 for attribute_value in product.product_template_attribute_value_ids:
                     if attribute_value.attribute_id.id in list(constraint_attribute.keys()):
                         if attribute_value not in constraint_attribute[attribute_value.attribute_id.id]:
-                            unlink_line |= bom_line
-
+                            unlink_line |= line
             # Update line
+            for line in lines:
+                line.bom_product_template_attribute_value_ids = False
             unlink_line.unlink()
-            for bom_line in new_bom.bom_line_ids:
-                bom_line.bom_product_template_attribute_value_ids = False
+
+        # start
+        for product in self:
+            # Check starting condition
+            if not product.bom_id:
+                product.get_bom_id()
+            if product.bom_id:
+                continue
+            if not product.product_tmpl_id.bom_id:
+                product.product_tmpl_id.get_tmpl_bom_id()
+                if not product.product_tmpl_id.bom_id:
+                    continue
+            # Create new BOM based on template BOM
+            new_bom = product.product_tmpl_id.bom_id.copy(default or {})
+            check_constraint_attribute(new_bom.bom_line_ids, product)
+            check_constraint_attribute(new_bom.operation_ids, product)
+
             # update bom
             new_bom.product_id = product
             product.bom_id = new_bom

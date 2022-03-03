@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_workcenter_line_tree_dynamic">
+        <field name="name">view.mrp.routing.workcenter.tree</field>
+        <field name="model">mrp.routing.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_routing_workcenter_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="workcenter_id" position="after">
+                <field name="group_id" optional="hide"/>
+            </field>
+            <field name="time_cycle" position="after">
+                <field name="python_compute" optional="hide"/>
+                <field name="parent_product_tmpl_id" invisible="1"/>
+                <field name="possible_bom_product_template_attribute_value_ids" invisible="1"/>
+                <field name="bom_product_template_attribute_value_ids" optional="hide" widget="many2many_tags" options="{'no_create': True}" attrs="{'column_invisible': [('parent.product_id', '!=', False)]}" groups="product.group_product_variant"/>
+            </field>
+        </field>
+    </record>
+    
+      <record model="ir.ui.view" id="view_workcenter_line_form_dynamic">
+        <field name="name">view.mrp.routing.workcenter.form</field>
+        <field name="model">mrp.routing.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_routing_workcenter_form_view"/>
+        <field name="arch" type="xml">
+            <notebook position="before">
+                <group>
+                    <field name="group_id" optional="hide"/>
+                    <field name="parent_product_tmpl_id" invisible="1"/>
+                    <field name="possible_bom_product_template_attribute_value_ids" invisible="1"/>
+                    <field name="bom_product_template_attribute_value_ids" optional="hide" widget="many2many_tags" options="{'no_create': True}" attrs="{'column_invisible': [('parent.product_id', '!=', False)]}" groups="product.group_product_variant"/>
+                </group>
+            </notebook>
+            <notebook position="inside">
+                <page string="Python code" name="python">
+                    <field name="python_compute" optional="hide"/>
+                </page>
+            </notebook>
+        </field>
+    </record>  
+</odoo>

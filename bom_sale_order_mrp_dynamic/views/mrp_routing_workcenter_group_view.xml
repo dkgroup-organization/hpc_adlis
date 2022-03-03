@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="mrp_routing_workcenter_tree_view" model="ir.ui.view">
+		<field name="name">mrp.routing.workcenter.group</field>
+		<field name="model">mrp.routing.workcenter.group</field>
+		<field name="arch" type="xml">
+			<tree editable="bottom">
+				<field name="name"/>	
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_mrp_routing_workcenter" model="ir.actions.act_window">
+		<field name="name">Group of operation</field>
+		<field name="res_model">mrp.routing.workcenter.group</field>
+		<field name="view_mode">tree</field>
+	</record>
+
+	<menuitem id="menu_mrp_routing_workcenter" name="Grouping operation" parent="mrp.menu_mrp_configuration" action="action_mrp_routing_workcenter"/>
+
+
+</odoo>

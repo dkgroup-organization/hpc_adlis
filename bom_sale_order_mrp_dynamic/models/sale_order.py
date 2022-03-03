@@ -25,7 +25,7 @@ class SaleOrderLine(models.Model):
 
             if line.product_custom_attribute_value_ids and line.bom_id:
                 line.bom_id.sale_line_id = line
-                _logger.info
+                line.bom_id.compute_line()
 
     @api.model
     def create(self, values):
@@ -42,20 +42,18 @@ class SaleOrderLine(models.Model):
     def button_open_bom(self):
         """open bom form"""
         self.ensure_one()
+        self.update_bom_id()
+        res_id = self.product_id.bom_id.id or False
 
-        if not self.bom_id:
-            self.update_bom_id()
-
-        if not self.bom_id:
-            return False
+        if not res_id:
+            return {}
         else:
             return {
                 'type': 'ir.actions.act_window',
                 'view_mode': 'form',
                 'res_model': 'mrp.bom',
-                'res_id': self.bom_id.id or False,
+                'res_id': res_id,
                 'views': [(False, 'form')],
                 'view_id': False,
                 'target': 'new',
-                #'context': self.env.context,
             }

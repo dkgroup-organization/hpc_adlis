@@ -24,6 +24,8 @@
         'views/sale_order_view.xml',
         'views/product_view.xml',
         'views/mrp_bom_view.xml',
+        'views/mrp_routing_workcenter_view.xml',
+        'views/mrp_routing_workcenter_group_view.xml',
         'views/product_attribute_view.xml',
     ],
     # only loaded in demonstration mode
