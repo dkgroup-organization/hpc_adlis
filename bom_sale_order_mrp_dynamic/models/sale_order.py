@@ -7,10 +7,48 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    def _action_confirm(self):
+        """Add some function on order confirmation"""
+
+        # TODO add stock rules before the validation
+        # TODO add sale order line on the manufacture order
+        for order in self:
+            order.order_line.update_bom_id()
+
+        for order in self:
+            order.order_line.create_production()
+
+        res = super()._action_confirm()
+        return res
+
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     bom_id = fields.Many2one('mrp.bom', string='BOM', domain="[('product_id', '=', product_id)]")
+    production_id = fields.Many2one('mrp.production', string='Production')
+
+    def create_production(self):
+        """ Create a production order"""
+        for line in self:
+            if not line.production_id and line.bom_id and line.product_id.jit_production:
+                wo_vals = {
+                    'product_id': line.product_id.id,
+                    'bom_id': line.bom_id.id,
+                    'origin': line.order_id.name,
+                    'product_qty': line.product_uom_qty,
+                    'product_uom_id': line.product_uom.id,
+                }
+                line.production_id = self.env['mrp.production'].create(wo_vals)
+                line.production_id._onchange_move_raw()
+                line.production_id._onchange_workorder_ids()
+
+
+
+
 
     def update_bom_id(self):
         """Update bom"""

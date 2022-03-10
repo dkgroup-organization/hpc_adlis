@@ -1,7 +1,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
+from odoo.tools.safe_eval import safe_eval
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -11,6 +12,40 @@ class ProductProduct(models.Model):
 
     bom_id = fields.Many2one('mrp.bom', 'BOM', compute='get_bom_id', store=True)
     bom_line_ids = fields.One2many('mrp.bom.line', related='bom_id.bom_line_ids', string="BOM line")
+    compute_input = fields.Char('Compute input')
+    compute_output = fields.Char('Compute output')
+
+    def compute_python_old(self, data={}):
+        """ Compute the python code on template to complete the product value"""
+        for product in self:
+            res = {}
+            if product.python_compute:
+                localdict = data.copy()
+                localdict.update({'product': product})
+                if product.bom_id:
+                    localdict.update(product.bom_id.get_attribute_value())
+
+                # Check ambiguity
+                for attribute, value in localdict.items():
+                    if hasattr(product, attribute):
+                        raise ValidationError(
+                            "The parameters name %s is reserved on product" % attribute)
+
+                # Execute safe code, return localdict with result
+                safe_eval(product.python_compute, localdict, mode="exec", nocopy=True)
+
+                for attribute, value in localdict.items():
+                    if len(attribute) and attribute[0] == "_":
+                        continue
+                    if hasattr(product, attribute):
+                        try:
+                            setattr(product, attribute, value)
+                        except:
+                            _logger.warning("This value cannot be loading product.id = %s value : %s; %s" % (product.id, attribute, value))
+
+    def compute_python_code(self, data={}):
+        """ Compute the python code on template to complete the product value"""
+        return self.env['product.template'].compute_python_code(self)
 
     def get_bom_id(self):
         for product in self:
@@ -21,8 +56,7 @@ class ProductProduct(models.Model):
         "Create BOM with information from template BOM"
 
         def check_constraint_attribute(lines, product):
-            """unlink line when constraint is not ok, the lines can be :
-
+            """ Unlink line when constraint is not ok, the lines can be :
             """
             unlink_line = self.env[lines._name]
 

@@ -44,15 +44,5 @@ class MrpRoutingWorkcenter(models.Model):
             line.possible_bom_product_template_attribute_value_ids = line.parent_product_tmpl_id.valid_product_template_attribute_line_ids._without_no_variant_attributes().product_template_value_ids._only_active()
 
     def compute_line(self, data={}):
-        """Compute the line"""
-
-        for line in self:
-            if line.python_compute:
-                localdict = data.copy()
-                localdict.update(line.bom_id.get_attribute_value())
-                localdict.update({'line': line})
-                # Execute safe code, return localdict with result
-                safe_eval(line.python_compute, localdict, mode="exec", nocopy=True)
-
-                if localdict.get('time_cycle_manual'):
-                    line.time_cycle_manual = localdict['time_cycle_manual']
+        """ Compute the python code on template to complete the product value"""
+        return self.env['product.template'].compute_python_code(self)

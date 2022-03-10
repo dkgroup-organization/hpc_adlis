@@ -26,7 +26,14 @@
                                     <field name="python_compute"/>
                                     <field name="bom_product_template_attribute_value_ids" widget="many2many_tags"/>
                                 </tree>
-                    </field>
+                            </field>
+                    
+                    <group>
+                        <button name="update_variant_compute" type="object" string="Compute on variant"/>
+                        <field name="python_compute"/>
+
+                    </group>
+                    
                 </page>
             </page>
 
@@ -72,6 +79,8 @@
                         <button name="create_bom" type="object" string="Create BOM" attrs="{'invisible': [('bom_id', '!=', False)]}"/>
                         <field name="bom_id" attrs="{'invisible': [('bom_id', '=', False)]}"/>
                     </group>
+
+
 
                     </group>
 
