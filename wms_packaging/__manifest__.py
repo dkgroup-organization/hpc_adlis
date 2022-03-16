@@ -2,10 +2,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Wms packaging',
-    'version': '0.1',
+    'name': 'WMS packaging',
+    'version': '14.0.1',
     'category': 'Base',
-    'summary': 'Personnalisation packaging',
+    'summary': 'WMS packaging',
     'description': """
 This module contains the customization packaging
 

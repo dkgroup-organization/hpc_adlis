@@ -43,22 +43,15 @@ class PurchaseOrderLine(models.Model):
             return
 
         # Reset date, price and quantity since _onchange_quantity will provide default values
-        self.price_unit = self.product_qty = 0.0
+        self.price_unit = 0.0
+        self.product_qty = 1.0
 
         self._product_id_change()
-
         self._suggest_quantity()
         self._onchange_quantity()
 
         self.product_packaging = None
         self.packaging_qty = 1.0
-
-        if self.product_id.sale_unit:
-            for line in self.product_id.packaging_ids:
-                if line.sale_unit == self.product_id.sale_unit:
-                    self.product_packaging = line.id
-                    self.product_qty = self.product_packaging.qty
-                    break
 
     def _prepare_stock_moves(self, picking):
         res = super(PurchaseOrderLine, self)._prepare_stock_moves(picking)
